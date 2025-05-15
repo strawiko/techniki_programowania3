@@ -1,38 +1,46 @@
 cmake_minimum_required(VERSION 3.15)
 project(techniki_programowania3 VERSION 1.0)
 
-# Find required packages
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-find_package(pybind11 CONFIG REQUIRED)
-find_package(Matplot++ REQUIRED)
+# Pobierz Matplot++ jeśli nie masz vcpkg
+include(FetchContent)
+FetchContent_Declare(matplotplusplus
+    GIT_REPOSITORY https://github.com/alandefreitas/matplotplusplus
+    GIT_TAG origin/master
+)
+FetchContent_GetProperties(matplotplusplus)
+if(NOT matplotplusplus_POPULATED)
+    FetchContent_Populate(matplotplusplus)
+    add_subdirectory(${matplotplusplus_SOURCE_DIR} ${matplotplusplus_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
 
-# Specify the C++ standard
+# Znajdź Python i pybind11 (pip)
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+execute_process(
+    COMMAND "${Python3_EXECUTABLE}" -m pybind11 --cmakedir
+    OUTPUT_VARIABLE pybind11_DIR
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+find_package(pybind11 CONFIG REQUIRED)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Create Python module instead of executable
 pybind11_add_module(example src/main.cpp)
 
-# Link libraries
 target_link_libraries(example 
-    PRIVATE 
+    PRIVATE
         Matplot++::matplot
         Python3::Python
-        
 )
 
-# Include directories
 target_include_directories(example 
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
         ${Python3_INCLUDE_DIRS}
-
 )
 
-# Set output directories
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-# Optional: Add compiler warnings
 if(MSVC)
     target_compile_options(example PRIVATE /W4)
 else()

@@ -3,7 +3,7 @@
 #include<pybind11/pybind11.h>
 int add() {
     int a = 5;
-    int b = 4;
+    int b = 4123123;
     return a + b;
 }//zdwad
 PYBIND11_MODULE(example, m) {
