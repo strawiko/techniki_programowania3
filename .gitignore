@@ -19,7 +19,7 @@ CMakeUserPresets.json
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
-
+tests/
 # Build directories
 build/
 out/
