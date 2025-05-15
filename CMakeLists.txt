@@ -7,6 +7,7 @@ FetchContent_Declare(matplotplusplus
     GIT_REPOSITORY https://github.com/alandefreitas/matplotplusplus
     GIT_TAG origin/master
 )
+option(CPM_USE_LOCAL_PACKAGES "Try `find_package` before downloading dependencies" ON)
 FetchContent_GetProperties(matplotplusplus)
 if(NOT matplotplusplus_POPULATED)
     FetchContent_Populate(matplotplusplus)
