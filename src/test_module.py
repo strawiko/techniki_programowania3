@@ -2,7 +2,7 @@ import sys
 import os
 
 # Get absolute path to build directory
-build_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "build"))
+build_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../build"))
 lib_path = os.path.join(build_path, "lib")  # some builds put .so files in lib/
 
 # Add both possible locations to Python path
