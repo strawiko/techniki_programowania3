@@ -18,6 +18,7 @@ target_link_libraries(example
     PRIVATE 
         Matplot++::matplot
         Python3::Python
+        
 )
 
 # Include directories
@@ -25,6 +26,7 @@ target_include_directories(example
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
         ${Python3_INCLUDE_DIRS}
+
 )
 
 # Set output directories
