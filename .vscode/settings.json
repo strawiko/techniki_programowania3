@@ -1,0 +1,10 @@
+// filepath: c:\Users\straw\techniki_programowania3\.vscode\settings.json
+{
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "C:/Users/straw/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    },
+    "cmake.generator": "Visual Studio 17 2022",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureOnOpen": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}

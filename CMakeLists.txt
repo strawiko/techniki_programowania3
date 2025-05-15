@@ -26,10 +26,35 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Enable testing
 enable_testing()
-
 # Optional: Add compiler warnings
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
-endif()
+endif()cmake_minimum_required(VERSION 3.15)
+project(techniki_programowania3 VERSION 1.0)
+
+# Find required packages
+find_package(Matplot++ REQUIRED)
+find_package(pybind11 CONFIG REQUIRED)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Add source files
+set(SOURCES
+    src/main.cpp
+)
+
+# Add executable
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Link libraries
+target_link_libraries(${PROJECT_NAME} 
+    PRIVATE 
+        Matplot++::matplot
+        pybind11::headers
+)
+
+# Rest of your existing CMakeLists.txt content...
