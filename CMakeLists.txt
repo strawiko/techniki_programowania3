@@ -32,7 +32,7 @@ target_include_directories(example
 )
 
 # Set output directory for the compiled module
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUzTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Add compiler warnings
 if(MSVC)
