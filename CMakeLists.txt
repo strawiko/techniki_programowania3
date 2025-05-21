@@ -23,13 +23,13 @@ target_link_libraries(example
 )
 
 # Include directories
-target_include_directories(example 
-    PRIVATE 
-        ${PROJECT_SOURCE_DIR}/include
-        ${Python3_INCLUDE_DIRS}
-        ${PROJECT_SOURCE_DIR}/lib/matplotplusplus/include
-        ${PROJECT_SOURCE_DIR}/lib/pybind11/include
-)
+#target_include_directories(example 
+    #PRIVATE 
+        #${PROJECT_SOURCE_DIR}/include
+        #${Python3_INCLUDE_DIRS}
+        #${PROJECT_SOURCE_DIR}/lib/matplotplusplus/include
+        #${PROJECT_SOURCE_DIR}/lib/pybind11/include
+#)
 
 # Set output directory for the compiled module
 set(CMAKE_LIBRARY_OUzTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
