@@ -1,14 +1,35 @@
 #include <iostream>
 #include <matplot/matplot.h>
-#include<pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <pybind11/pybind11.h>
+#include "headers.h"
+
 int add() {
     int a = 5;
     int b = 7;
+    Signal s (3.0, 0.0, 1.0, "sin");
+    for(int i = 0; i < 100; i+=10) {
+        std::cout << s.samples[i] << " ";
+    }std::cout << std::endl;
     return a + b;
-}//zdwad
-PYBIND11_MODULE(example, m) {
-    m.doc() = "Example module using pybind11"; // optional module docstring
+}
 
-    // Expose functions to Python
+PYBIND11_MODULE(example, m) {
+    m.doc() = "Example module using pybind11";
+
+    // Expose the add function
     m.def("add", &add, "A function that adds two numbers");
+
+    // Expose the Signal class
+    pybind11::class_<Signal>(m, "Signal")
+        .def(pybind11::init<double, double, double, std::string>())
+        .def_readwrite("frequency", &Signal::f)
+        .def_readwrite("t_start", &Signal::t_start)
+        .def_readwrite("t_end", &Signal::t_end)
+        .def_readwrite("name", &Signal::name)
+        .def_readwrite("samples", &Signal::samples);
+
+    // Add plot_signal function
+    m.def("plot_signal", &plot_signal, "Plot signal using matplot++",
+          pybind11::arg("signal"));
 }
