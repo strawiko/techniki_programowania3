@@ -1,38 +1,30 @@
 cmake_minimum_required(VERSION 3.15)
 project(techniki_programowania3 VERSION 1.0)
 include(FetchContent)
-# Add subdirectories for local libraries
-#add_subdirectory(lib/matplotplusplus)
-#add_subdirectory(lib/pybind11)
 
 # Find Python
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/lib)
+
+# Configure Matplot++ before fetching
+set(MATPLOT_BUILD_EXAMPLES OFF CACHE BOOL "")
+set(MATPLOT_BUILD_TESTS OFF CACHE BOOL "")
+set(MATPLOTPP_BACKEND "gnuplot" CACHE STRING "")
+set(MATPLOT_GNUPLOT_EXECUTABLE "C:/Program Files/gnuplot/bin/gnuplot.exe" CACHE STRING "")
 
 FetchContent_Declare(
     matplotplusplus
     GIT_REPOSITORY https://github.com/alandefreitas/matplotplusplus.git
     GIT_TAG master
 )
+
 FetchContent_Declare(
     pybind11
     GIT_REPOSITORY https://github.com/pybind/pybind11.git
     GIT_TAG master
 )
 
-FetchContent_MakeAvailable(matplotplusplus)
-
-FetchContent_MakeAvailable(pybind11)
-#FetchContent_GetProperties(matplotplusplus)
-#if(NOT matplotplusplus_POPULATED)
- #   FetchContent_Populate(matplotplusplus)
-  #  add_subdirectory(${matplotplusplus_SOURCE_DIR} ${matplotplusplus_BINARY_DIR} EXCLUDE_FROM_ALL)
-#endif()
-#FetchContent_GetProperties(pybind11)
-#if(NOT pybind11_POPULATED)
- #   FetchContent_Populate(pybind11)
-#    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR} EXCLUDE_FROM_ALL)
-#endif()
+FetchContent_MakeAvailable(matplotplusplus pybind11)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
