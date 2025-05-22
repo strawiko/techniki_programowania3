@@ -2,15 +2,20 @@ cmake_minimum_required(VERSION 3.15)
 project(techniki_programowania3 VERSION 1.0)
 include(FetchContent)
 
-# Find Python
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/lib)
-
 # Configure Matplot++ before fetching
 set(MATPLOT_BUILD_EXAMPLES OFF CACHE BOOL "")
 set(MATPLOT_BUILD_TESTS OFF CACHE BOOL "")
 set(MATPLOTPP_BACKEND "gnuplot" CACHE STRING "")
-set(MATPLOT_GNUPLOT_EXECUTABLE "C:/Program Files/gnuplot/bin/gnuplot.exe" CACHE STRING "")
+set(MATPLOT_GNUPLOT_TERM "png" CACHE STRING "")
+set(MATPLOT_GNUPLOT_INTERACTIVE OFF CACHE BOOL "")
+set(MATPLOT_GNUPLOT_COMMANDLINE_FLAGS "-e" CACHE STRING "")  # Add this line
+set(MATPLOT_GNUPLOT_PIPE OFF CACHE BOOL "")                  # Add this line
+
+# Find Python
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/lib)
+
+
 
 FetchContent_Declare(
     matplotplusplus

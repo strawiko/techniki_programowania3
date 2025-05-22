@@ -26,7 +26,8 @@ void plot_signal(Signal signal) {
     title("Signal: " + signal.name);
     
     // Save plot to raport directory
-    std::string filename = (report_path / (signal.name + "_signal.png")).string();
+    std::string filename = (("../raport/"+signal.name + "_signal.png"));
+    std::cout << "Saving plot to: " << filename << std::endl;
     save(filename);
-    //show();
+    show();
 }
