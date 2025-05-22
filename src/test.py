@@ -23,13 +23,17 @@ try:
     import example
 
 # Create signal object
-    signal1 = example.Signal(3.0, 0.0, 1.0, "sin")
+    freaquency = float(input("podaj częstotliwość sygnału: "))
+    start = float(input("podaj moment rozpoczęcia: "))
+    end = float(input("podaj moment zakończenia: "))
+    signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
+    signal1 = example.Signal(freaquency, start, end, signal_type)
     plot = example.plot_signal(signal1)
     # Test if import worked
-    result = example.add()
-    print(f"Success! Result of add(): {result}")
-    print(f"Running on: {system}")
-    print(f"\nModule location: {example.__file__}")
+    # result = example.add()
+    # print(f"Success! Result of add(): {result}")
+    # print(f"Running on: {system}")
+    # print(f"\nModule location: {example.__file__}")
 
 except ImportError as e:
     print(f"Import error: {e}")

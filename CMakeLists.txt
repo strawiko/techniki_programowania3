@@ -6,16 +6,10 @@ include(FetchContent)
 set(MATPLOT_BUILD_EXAMPLES OFF CACHE BOOL "")
 set(MATPLOT_BUILD_TESTS OFF CACHE BOOL "")
 set(MATPLOTPP_BACKEND "gnuplot" CACHE STRING "")
-set(MATPLOT_GNUPLOT_TERM "png" CACHE STRING "")
-set(MATPLOT_GNUPLOT_INTERACTIVE OFF CACHE BOOL "")
-set(MATPLOT_GNUPLOT_COMMANDLINE_FLAGS "-e" CACHE STRING "")  # Add this line
-set(MATPLOT_GNUPLOT_PIPE OFF CACHE BOOL "")                  # Add this line
 
 # Find Python
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/lib)
-
-
 
 FetchContent_Declare(
     matplotplusplus
@@ -30,7 +24,6 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(matplotplusplus pybind11)
-
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

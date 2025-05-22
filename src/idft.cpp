@@ -5,14 +5,13 @@
 #include "headers.h"
 
 std::vector<double> idft(const std::vector<std::complex<double>>& X) {
-    const int N = X.size();
-    std::vector<double> samples(N);
-    const double scale = 1.0 / N;
+    std::vector<double> samples(X.size());
+    const double scale = 1.0 / X.size();
     
-    for (int n = 0; n < N; n++) {
+    for (int n = 0; n < X.size(); n++) {
         std::complex<double> sum(0.0, 0.0);
-        for (int k = 0; k < N; k++) {
-            sum += X[k] * std::exp(std::complex<double>(0, 2.0 * PI * k * n / N));
+        for (int k = 0; k < X.size(); k++) {
+            sum += X[k] * std::exp(std::complex<double>(0, 2.0 * PI * k * n / X.size()));
         }
         samples[n] = scale * std::real(sum);
     }

@@ -18,8 +18,15 @@ void plot_signal(Signal signal) {
     for(size_t i = 0; i < t.size(); i++) {
         t[i] = i * dt;
     }
-
+    
+     double margin = (*std::max_element(signal.samples.begin(), signal.samples.end()) - *std::min_element(signal.samples.begin(), signal.samples.end())) * 0.2;
+    //std::cout << "Margin: " << *std::min_element(signal.samples.begin(), signal.samples.end()) << std::endl;
+    double y_min = *std::min_element(signal.samples.begin(), signal.samples.end()) - margin;
+    double y_max = *std::max_element(signal.samples.begin(), signal.samples.end()) + margin;
+    // double y_min = 1.2;
+    // double y_max = -1.2;
     // Create plot
+    ylim({y_min, y_max});
     plot(t, signal.samples);
     xlabel("Time [s]");
     ylabel("Amplitude");
