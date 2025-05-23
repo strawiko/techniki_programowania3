@@ -33,6 +33,8 @@ pybind11_add_module(example
     src/main.cpp
     src/generator.cpp
     src/plot.cpp
+    src/dft.cpp
+    src/idft.cpp
 )
 
 # Link libraries

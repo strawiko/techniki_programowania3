@@ -29,6 +29,9 @@ public:
         : f(frequency), t_start(start), t_end(end), name(signal_name) {
         samples = generate(f, t_start, t_end, name);
     }
+    ~Signal(){
+        std::cout << "Signal destructor called for " << name << std::endl;
+    };
 };
 
 void plot_signal(Signal signal);  // Add this declaration

@@ -28,12 +28,39 @@ try:
     end = float(input("podaj moment zakończenia: "))
     signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
     signal1 = example.Signal(freaquency, start, end, signal_type)
-    plot = example.plot_signal(signal1)
-    # Test if import worked
-    # result = example.add()
-    # print(f"Success! Result of add(): {result}")
-    # print(f"Running on: {system}")
-    # print(f"\nModule location: {example.__file__}")
+    wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
+    while wybor!="q":
+        if wybor == "g":
+            freaquency = float(input("podaj częstotliwość sygnału: "))
+            start = float(input("podaj moment rozpoczęcia: "))
+            end = float(input("podaj moment zakończenia: "))
+            signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
+            signal2 = example.Signal(freaquency, start, end, signal_type)
+        elif wybor == "f":
+            filter_type = input("podaj typ filtru (lowpass, highpass): ")
+            cutoff_frequency = float(input("podaj częstotliwość odcięcia: "))
+            filtered_signal = example.filter_signal(signal1, filter_type, cutoff_frequency)
+            plot = example.plot_signal(filtered_signal)
+        elif wybor == "p":
+            print("Wybierz sygnał do wyświetlenia:")
+            if (input("1 - sygnał 1, 2 - sygnał 2") == "1"):
+                plot = example.plot_signal(signal1)
+            else:
+                plot = example.plot_signal(signal2)
+        elif wybor == "dft":
+            transformed_signal = example.dft(signal1)
+            plot = example.plot_signal(transformed_signal)
+        elif wybor == "rdft":
+            transformed_signal = example.rdft(signal1)
+            plot = example.plot_signal(transformed_signal)
+        else:
+            print("Nieznany wybór. Spróbuj ponownie.")
+        wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
+        # Test if import worked
+        # result = example.add()
+        # print(f"Success! Result of add(): {result}")
+        # print(f"Running on: {system}")
+        # print(f"\nModule location: {example.__file__}")
 
 except ImportError as e:
     print(f"Import error: {e}")

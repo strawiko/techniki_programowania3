@@ -31,5 +31,13 @@ PYBIND11_MODULE(example, m) {
 
     // Add plot_signal function
     m.def("plot_signal", &plot_signal, "Plot signal using matplot++",
-          pybind11::arg("signal"));
+        pybind11::arg("signal"));
+          
+    m.def("dft", &dft, "Discrete Fourier Transform",
+        pybind11::arg("signal"));
+
+    m.def("idft", &idft, "Inverse Discrete Fourier Transform",
+        pybind11::arg("signal"));
+    
+
 }
