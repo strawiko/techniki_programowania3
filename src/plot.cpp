@@ -31,10 +31,11 @@ void plot_signal(Signal signal) {
     xlabel("Time [s]");
     ylabel("Amplitude");
     title("Signal: " + signal.name);
-    
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(1) << signal.f; // ustawi 2 miejsca po przecinku
     // Save plot to raport directory
-    std::string filename = (("../raport/"+signal.name + "_signal.png"));
-    std::cout << "Saving plot to: " << filename << std::endl;
+    std::string filename = (("../raport/"+signal.name+" "+ss.str()+"hz" + "_signal.png"));
+    std::cout << "Saving plot to: " << filename<< std::endl;
     save(filename);
     show();
 }
