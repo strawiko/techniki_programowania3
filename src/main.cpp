@@ -29,9 +29,17 @@ PYBIND11_MODULE(example, m) {
         .def_readwrite("name", &Signal::name)
         .def_readwrite("samples", &Signal::samples);
 
+    pybind11::class_<Fourier>(m, "Fourier")
+        .def(pybind11::init<Signal>())
+        .def_readwrite("X", &Fourier::X)
+        .def_readwrite("t_start", &Fourier::t_start)
+        .def_readwrite("t_end", &Fourier::t_end);
     // Add plot_signal function
     m.def("plot_signal", &plot_signal, "Plot signal using matplot++",
         pybind11::arg("signal"));
+    
+    m.def("plot_fourier", &plot_fourier, "Plot Fourier transform using matplot++",
+        pybind11::arg("fourier"));
           
     m.def("dft", &dft, "Discrete Fourier Transform",
         pybind11::arg("signal"));
