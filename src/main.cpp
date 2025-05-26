@@ -24,7 +24,7 @@ PYBIND11_MODULE(example, m) {
     // Expose the Signal class
     pybind11::class_<Signal>(m, "Signal")
         .def(pybind11::init<double, double, double, std::string>())
-        .def(pybind11::init<double, double, double, std::string, Fourier>())
+        .def(pybind11::init< double, double, std::string, Fourier>())
         .def_readwrite("frequency", &Signal::f)
         .def_readwrite("t_start", &Signal::t_start)
         .def_readwrite("t_end", &Signal::t_end)

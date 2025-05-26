@@ -67,7 +67,7 @@ try:
         elif wybor == "rdft":
             indekswyboru = wypiszelementy(fourierlist)
             #example.N/(fourierlist[indekswyboru].t_end-fourierlist[indekswyboru].t_start)
-            signallist.append(example.Signal(3.4, fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
+            signallist.append(example.Signal(fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
             print("czestotliwość sygnału:", signallist[len(signallist)-1].frequency)
         else:
             print("Nieznany wybór. Spróbuj ponownie.")

@@ -34,7 +34,7 @@ void plot_signal(Signal signal) {
     std::stringstream ss;
     ss << std::fixed << std::setprecision(1) << signal.f; // ustawi 2 miejsca po przecinku
     // Save plot to raport directory
-    std::string filename = (("../raport/"+signal.name+" "+ss.str()+"hz" + "_signal.png"));
+    std::string filename = (("../raport/"+signal.name+" "+(signal.name=="rdft"?(ss.str()+"hz"):"" )+ "_signal.png"));
     std::cout << "Saving plot to: " << filename<< std::endl;
     save(filename);
     show();

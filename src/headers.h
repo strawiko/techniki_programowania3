@@ -31,7 +31,7 @@ public:
 
     Signal(double frequency, double start, double end, std::string signal_name) ;
         
-    Signal(double frequency, double start, double end, std::string signal_name,const Fourier& transformata);
+    Signal( double start, double end, std::string signal_name,const Fourier& transformata);
 
     ~Signal();
 };
