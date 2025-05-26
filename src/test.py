@@ -43,7 +43,7 @@ try:
     signallist = []
     signallist.append(example.Signal(freaquency, start, end, signal_type))
     fourierlist = []
-    wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
+    wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, pf- plotuj transformaty, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
     while wybor!="q":
         if wybor == "g":
             freaquency = float(input("podaj częstotliwość sygnału: "))
