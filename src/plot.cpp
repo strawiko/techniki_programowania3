@@ -26,6 +26,7 @@ void plot_signal(Signal signal) {
     // double y_min = 1.2;
     // double y_max = -1.2;
     // Create plot
+    xlim({signal.t_start, signal.t_end});
     ylim({y_min, y_max});
     plot(t, signal.samples);
     xlabel("Time [s]");
@@ -48,26 +49,39 @@ void plot_fourier(Fourier fourier) {
         std::filesystem::create_directory(report_path);
     }
 
-    // Create frequency vector
-    std::vector<double> f(fourier.X.size());
-    double df = N / (fourier.X.size());  // Changed formula for frequency resolution
-    for(size_t i = 0; i < f.size(); i++) {
-        f[i] = i * df;
-    }
+    // Create frequency vector based on actual signal sampling
+    size_t M  = fourier.X.size();  // liczba próbek
+double fs = N;         // częstotliwość próbkowania [Hz]
+double df = fs / M;            // odstęp między kolejnymi binami częstotliwości [Hz]
 
-    // Create magnitude vector
-    std::vector<double> magnitude(fourier.X.size());
-    for(size_t i = 0; i < fourier.X.size(); i++) {
-        magnitude[i] = std::abs(fourier.X[i]);
-    }
-std::cout<< "to tuuuuuuuuuuuuuFourier transform size: " << fourier.X.size() << std::endl;
+// Wyświetlamy tylko "pozytywną" połowę widma (do Nyquista)
+size_t H = M/2 + 1;            // liczba binów w rfft
+std::vector<double> f(H), magnitude(H);
+
+for (size_t k = 0; k < H; ++k) {
+    // oś częstotliwości w [Hz]
+    f[k] = k * df;
+
+    // amplituda – standardowo skalujemy przez 2/M, żeby mieć
+    // rzeczywiste wartości z dziedziny czasu
+    magnitude[k] = 2.0 * std::abs(fourier.X[k]) / M;
+
+    // jeżeli wolisz widmo mocy:
+    // magnitude[k] = std::norm(fourier.X[k]) / M;
+}
+
+// potem:
+
+xlim({0, *std::max_element(f.begin(),f.end())* 1.2});
+ylim({0, *std::max_element(magnitude.begin(), magnitude.end()) * 1.2});
+plot(f, magnitude);
+xlabel("Frequency [Hz]");
+ylabel("Magnitude");
+title("Fourier Transform");
+    
+//*std::max_element(magnitude.begin(), magnitude.end()) * 1.2}
     // Create plot
-    xlim({0, *std::max_element(f.begin(), f.end()) * 1.2});
-    ylim({*std::min_element(magnitude.begin(), magnitude.end()) * 1.2, *std::max_element(magnitude.begin(), magnitude.end()) * 1.2});
-    plot(f, magnitude);
-    xlabel("Frequency [Hz]");
-    ylabel("Magnitude");
-    title("Fourier Transform");
+    
     //nadpisanie maina
     // Save plot to raport directory
     std::string filename = (("../raport/Fourier_transform.png"));

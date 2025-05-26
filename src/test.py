@@ -23,7 +23,7 @@ try:
     # Try to import the specific module
     import example
     def wypiszelementy(tablica):
-        print("wybbierz sygnał do wyświetlenia:")
+        print("wybierz sygnał: ")
         if type(tablica[0]) == example.Signal:
             for i, element in enumerate(tablica):
                 print(f"sygnał[{i}]\n")

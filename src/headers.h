@@ -18,7 +18,7 @@ std::vector<std::complex<double>> dft(Signal signal);
 // Forward declaration of idft function
 std::vector<double> idft(Fourier fourier);
 constexpr double PI = 3.14159265358979323846;
-constexpr int N = 1000;  // Sampling frequency (samples per second)
+constexpr int N = 100;  // Sampling frequency (samples per second)
 
 class Signal {
 public:
