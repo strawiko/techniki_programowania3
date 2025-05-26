@@ -3,8 +3,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
-#define PI 3.14159265358979323846
-#define N 1000
+
 
 std::vector<double> generate(double f, double t_start, double t_end, std::string name) {
     int sf = N * f;
