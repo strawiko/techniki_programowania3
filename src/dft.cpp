@@ -4,6 +4,7 @@
 #include <complex>
 #include "headers.h"
 
+
 std::vector<std::complex<double>> dft(Signal signal) {
 
     std::vector<std::complex<double>> X(signal.samples.size());
@@ -16,9 +17,13 @@ std::vector<std::complex<double>> dft(Signal signal) {
             double real = std::cos(angle);
             double imag = -std::sin(angle);
             X[k] += signal.samples[n] * std::complex<double>(real, imag);
+
         }
         X[k] *= scale;  // Normalization
     }
-    
-    return X;
+    Y.reserve(X.size());
+    for (int i = 0; i < X.size(); i++) {
+        Y.push_back(X[i].real());
+    }
+    return Y;
 }
