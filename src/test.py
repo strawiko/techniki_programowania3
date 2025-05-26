@@ -68,7 +68,7 @@ try:
             indekswyboru = wypiszelementy(fourierlist)
             #example.N/(fourierlist[indekswyboru].t_end-fourierlist[indekswyboru].t_start)
             signallist.append(example.Signal(fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
-            print("czestotliwość sygnału:", signallist[len(signallist)-1].frequency)
+            print("Odwrotna transformata Fouriera została dodana do listy sygnałów.")
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
         wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
