@@ -39,3 +39,39 @@ void plot_signal(Signal signal) {
     save(filename);
     show();
 }
+void plot_fourier(Fourier fourier) {
+    using namespace matplot;
+
+    // Create report directory if it doesn't exist
+    std::filesystem::path report_path = std::filesystem::current_path().parent_path() / "raport";
+    if (!std::filesystem::exists(report_path)) {
+        std::filesystem::create_directory(report_path);
+    }
+
+    // Create frequency vector
+    std::vector<double> f(fourier.X.size());
+    double df = 1.0 / (fourier.t_end - fourier.t_start)/N;
+    for(size_t i = 0; i < f.size(); i++) {
+        f[i] = i * df;
+    }
+
+    // Create magnitude vector
+    std::vector<double> magnitude(fourier.X.size());
+    for(size_t i = 0; i < fourier.X.size(); i++) {
+        magnitude[i] = std::abs(fourier.X[i]);
+    }
+std::cout<< "to tuuuuuuuuuuuuuFourier transform size: " << fourier.X.size() << std::endl;
+    // Create plot
+    xlim({0, *std::max_element(f.begin(), f.end()) * 1.2});
+    ylim({*std::min_element(magnitude.begin(), magnitude.end()) * 1.2, *std::max_element(magnitude.begin(), magnitude.end()) * 1.2});
+    plot(f, magnitude);
+    xlabel("Frequency [Hz]");
+    ylabel("Magnitude");
+    title("Fourier Transform");
+    
+    // Save plot to raport directory
+    std::string filename = (("../raport/Fourier_transform.png"));
+    std::cout << "Saving plot to: " << filename << std::endl;
+    save(filename);
+    show();
+}

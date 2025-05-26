@@ -2,6 +2,7 @@ import sys
 import os
 import platform
 
+
 # Get absolute path to build directory
 build_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../build'))
 
@@ -21,13 +22,26 @@ sys.path.append(build_path)
 try:
     # Try to import the specific module
     import example
+    def wypiszelementy(tablica):
+        print("wybbierz sygnał do wyświetlenia:")
+        if type(tablica[0]) == example.Signal:
+            for i, element in enumerate(tablica):
+                print(f"sygnał[{i}]\n")
+        elif type(tablica[0]) == example.Fourier:
+                for i, element in enumerate(tablica):
+                    print(f"Fourier[{i}]\n")
+        else:
+            print("Nieznany typ tablicy.")
+        return int(input())
 
 # Create signal object
     freaquency = float(input("podaj częstotliwość sygnału: "))
     start = float(input("podaj moment rozpoczęcia: "))
     end = float(input("podaj moment zakończenia: "))
     signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
-    signal1 = example.Signal(freaquency, start, end, signal_type)
+    signallist = []
+    signallist.append(example.Signal(freaquency, start, end, signal_type))
+    fourierlist = []
     wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
     while wybor!="q":
         if wybor == "g":
@@ -35,24 +49,22 @@ try:
             start = float(input("podaj moment rozpoczęcia: "))
             end = float(input("podaj moment zakończenia: "))
             signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
-            signal2 = example.Signal(freaquency, start, end, signal_type)
+            signallist.append(example.Signal(freaquency, start, end, signal_type))
         elif wybor == "f":
             filter_type = input("podaj typ filtru (lowpass, highpass): ")
             cutoff_frequency = float(input("podaj częstotliwość odcięcia: "))
-            filtered_signal = example.filter_signal(signal1, filter_type, cutoff_frequency)
+            filtered_signal = example.filter_signal(wypiszelementy(signallist), filter_type, cutoff_frequency)
             plot = example.plot_signal(filtered_signal)
         elif wybor == "p":
             print("Wybierz sygnał do wyświetlenia:")
-            if (input("1 - sygnał 1, 2 - sygnał 2") == "1"):
-                plot = example.plot_signal(signal1)
-            else:
-                plot = example.plot_signal(signal2)
+            example.plot_signal(signallist[wypiszelementy(signallist)])
+        elif wybor == "pf":
+            print("wybierz transformację Fouriera do wyświetlenia:")
+            example.plot_fourier(fourierlist[wypiszelementy(fourierlist)])
         elif wybor == "dft":
-            transformed_signal = example.dft(signal1)
-            plot = example.plot_signal(transformed_signal)
+            fourierlist.append(example.Fourier(signallist[wypiszelementy(signallist)]))
         elif wybor == "rdft":
-            transformed_signal = example.rdft(signal1)
-            plot = example.plot_signal(transformed_signal)
+            signallist.append(fourierlist[wypiszelementy(fourierlist)])
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
         wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
