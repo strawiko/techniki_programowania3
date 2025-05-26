@@ -21,9 +21,7 @@ std::vector<std::complex<double>> dft(Signal signal) {
         }
         X[k] *= scale;  // Normalization
     }
-    Y.reserve(X.size());
-    for (int i = 0; i < X.size(); i++) {
-        Y.push_back(X[i].real());
-    }
-    return Y;
+    //nadpisywanie maina
+    return X;
+
 }

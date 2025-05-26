@@ -33,6 +33,7 @@ try:
         else:
             print("Nieznany typ tablicy.")
         return int(input())
+    #nadpisywanie maina
 
 # Create signal object
     freaquency = float(input("podaj częstotliwość sygnału: "))

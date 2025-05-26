@@ -17,4 +17,4 @@ std::vector<double> idft(const std::vector<std::complex<double>>& X) {
     }
     
     return samples;
-}
+}    //nadpisywanie maina
