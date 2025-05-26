@@ -5,10 +5,10 @@
 #include <cmath>
 #include <complex>
 
-#define PI 3.14159265358979323846
-#define N 1000
+// #define PI 3.14159265358979323846
+// #define N 1000
 class Signal;  // Forward declaration of Signal class
-
+class Fourier;
 // Forward declaration of generate function
 std::vector<double> generate(double f, double t_start, double t_end, std::string name);
 
@@ -16,7 +16,9 @@ std::vector<double> generate(double f, double t_start, double t_end, std::string
 std::vector<std::complex<double>> dft(Signal signal);
 
 // Forward declaration of idft function
-std::vector<double> idft(const std::vector<std::complex<double>>& X);
+std::vector<double> idft(Fourier fourier);
+constexpr double PI = 3.14159265358979323846;
+constexpr int N = 1000;  // Sample size for signal generation
 
 class Signal {
 public:
@@ -27,28 +29,20 @@ public:
     std::vector<double> samples;
     //nadpisywanie maina
 
-    Signal(double frequency, double start, double end, std::string signal_name) 
-        : f(frequency), t_start(start), t_end(end), name(signal_name) {
-        samples = generate(f, t_start, t_end, name);
-    }
-    ~Signal(){
-        std::cout << "Signal destructor called for " << name << std::endl;
-    };
+    Signal(double frequency, double start, double end, std::string signal_name) ;
+        
+    Signal(double frequency, double start, double end, std::string signal_name,const Fourier& transformata);
+
+    ~Signal();
 };
 class Fourier {
 public:
     std::vector<std::complex<double>> X;
     double t_start;
     double t_end;
-    Fourier(Signal signal) {
-        X = dft(signal);
-        t_start = signal.t_start;
-        t_end = signal.t_end;
-    }
+    Fourier(const Signal& signal);
 
-    ~Fourier() {
-        std::cout << "Fourier destructor called for Fourier transform" << std::endl;
-    }
+    ~Fourier() ;
 };
 
 void plot_signal(Signal signal);  // Add this declaration

@@ -35,6 +35,8 @@ pybind11_add_module(example
     src/plot.cpp
     src/dft.cpp
     src/idft.cpp
+    src/Signal.cpp
+    src/Fourier.cpp
 )
 
 # Link libraries
