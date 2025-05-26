@@ -68,7 +68,7 @@ std::cout<< "to tuuuuuuuuuuuuuFourier transform size: " << fourier.X.size() << s
     xlabel("Frequency [Hz]");
     ylabel("Magnitude");
     title("Fourier Transform");
-    
+    //nadpisanie maina
     // Save plot to raport directory
     std::string filename = (("../raport/Fourier_transform.png"));
     std::cout << "Saving plot to: " << filename << std::endl;
