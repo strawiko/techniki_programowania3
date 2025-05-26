@@ -13,6 +13,7 @@ int add() {
     }std::cout << std::endl;
     return a + b;
 }
+    //nadpisywanie maina
 
 PYBIND11_MODULE(example, m) {
     m.doc() = "Example module using pybind11";

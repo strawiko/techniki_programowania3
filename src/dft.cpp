@@ -19,6 +19,6 @@ std::vector<std::complex<double>> dft(Signal signal) {
         }
         X[k] *= scale;  // Normalization
     }
-    
+    //nadpisywanie maina
     return X;
 }

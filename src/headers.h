@@ -25,6 +25,7 @@ public:
     double t_end;
     std::string name;
     std::vector<double> samples;
+    //nadpisywanie maina
 
     Signal(double frequency, double start, double end, std::string signal_name) 
         : f(frequency), t_start(start), t_end(end), name(signal_name) {
