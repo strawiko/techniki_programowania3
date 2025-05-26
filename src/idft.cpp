@@ -4,9 +4,10 @@
 #include <complex>
 #include "headers.h"
 
-std::vector<double> idft(const std::vector<std::complex<double>>& X) {
+std::vector<double> idft(Fourier fourier) {
+    const std::vector<std::complex<double>> X = fourier.X;
     std::vector<double> samples(X.size());
-    const double scale = 1.0 / X.size();
+    const double scale = 100.0 / X.size();
     
     for (int n = 0; n < X.size(); n++) {
         std::complex<double> sum(0.0, 0.0);
@@ -17,4 +18,4 @@ std::vector<double> idft(const std::vector<std::complex<double>>& X) {
     }
     
     return samples;
-}    //nadpisywanie maina
+}

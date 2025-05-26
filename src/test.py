@@ -31,9 +31,9 @@ try:
                 for i, element in enumerate(tablica):
                     print(f"Fourier[{i}]\n")
         else:
-            print("Nieznany typ tablicy.")
+            print("Nieznany typ tablicy lub brak elementow")
         return int(input())
-    #nadpisywanie maina
+
 
 # Create signal object
     freaquency = float(input("podaj częstotliwość sygnału: "))
@@ -65,7 +65,10 @@ try:
         elif wybor == "dft":
             fourierlist.append(example.Fourier(signallist[wypiszelementy(signallist)]))
         elif wybor == "rdft":
-            signallist.append(fourierlist[wypiszelementy(fourierlist)])
+            indekswyboru = wypiszelementy(fourierlist)
+            #example.N/(fourierlist[indekswyboru].t_end-fourierlist[indekswyboru].t_start)
+            signallist.append(example.Signal(3.4, fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
+            print("czestotliwość sygnału:", signallist[len(signallist)-1].frequency)
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
         wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
