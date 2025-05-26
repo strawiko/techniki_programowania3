@@ -34,8 +34,8 @@ std::vector<double> generate(double f, double t_start, double t_end, std::string
     }
     else if (name == "pila") {
         for (int i = 0; i < n; i++) {
-            double phase = 2 * PI * f * i / sf + t_start;
-            signal[i] = (2/PI) * (phase - PI * floor(phase/PI));
+            double phase =  PI * f * i / sf + t_start;
+            signal[i] = (1/PI) * (phase - PI * floor(phase/PI));
         }
     }
     else {
