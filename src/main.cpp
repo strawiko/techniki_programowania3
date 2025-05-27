@@ -4,7 +4,7 @@
 #include <pybind11/pybind11.h>
 #include "headers.h"
 #include<pybind11/complex.h>
-
+//sprawdzić czy potrzebne
 // int add() {
 //     int a = 5;
 //     int b = 7;
@@ -16,12 +16,12 @@
 // }
     //nadpisywanie maina
 
-PYBIND11_MODULE(example, m) {
+PYBIND11_MODULE(example, m) { //test
     m.doc() = "Example module using pybind11";
 
     
 
-    // Expose the Signal class
+    // definicje do pybind 
     pybind11::class_<Signal>(m, "Signal")
         .def(pybind11::init<double, double, double, std::string>())
         .def(pybind11::init< double, double, std::string, Fourier>())
@@ -37,9 +37,9 @@ PYBIND11_MODULE(example, m) {
         .def_readwrite("t_start", &Fourier::t_start)
         .def_readwrite("t_end", &Fourier::t_end);
 
-    m.attr("N")= N;  // Expose the constant N
-    m.attr("PI") = PI;  // Expose the constant PI
-    // Add plot_signal function
+    m.attr("N")= N;  // przekaz ilości próbek i WIELU cyfr liczby pi
+    m.attr("PI") = PI;  
+    //definicje funkcji
     m.def("plot_signal", &plot_signal, "Plot signal using matplot++",
         pybind11::arg("signal"));
     

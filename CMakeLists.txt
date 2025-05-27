@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.15)
 project(techniki_programowania3 VERSION 1.0)
 include(FetchContent)
 
-# Configure Matplot++ before fetching
+# ustawić matplot potem fetch
 set(MATPLOT_BUILD_EXAMPLES OFF CACHE BOOL "")
 set(MATPLOT_BUILD_TESTS OFF CACHE BOOL "")
 set(MATPLOTPP_BACKEND "gnuplot" CACHE STRING "")
 
-# Find Python
+# znajdź pytona, podaj wszystko czego nie ma w systemie
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/lib)
 
@@ -24,11 +24,11 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(matplotplusplus pybind11)
-# Set C++ standard
+# minimum c
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Create Python module
+# moduł pybind
 pybind11_add_module(example 
     src/main.cpp
     src/generator.cpp
@@ -39,26 +39,18 @@ pybind11_add_module(example
     src/Fourier.cpp
 )
 
-# Link libraries
+# podaje biblioteki
 target_link_libraries(example 
     PRIVATE
         Matplot++::matplot
         Python3::Python
 )
 
-# Include directories
-#target_include_directories(example 
-    #PRIVATE 
-        #${PROJECT_SOURCE_DIR}/include
-        #${Python3_INCLUDE_DIRS}
-        #${PROJECT_SOURCE_DIR}/lib/matplotplusplus/include
-        #${PROJECT_SOURCE_DIR}/lib/pybind11/include
-#)
 
-# Set output directory for the compiled module
+# ustawić katalogi wyjściowe
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib)
-# Add compiler warnings
+# dodać ostrzeżenia kompilatora
 if(MSVC)
     target_compile_options(example PRIVATE /W4)
 else()

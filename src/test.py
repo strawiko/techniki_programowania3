@@ -1,26 +1,25 @@
 import sys
 import os
 import platform
-
-
-# Get absolute path to build directory
+#prawie pseudokod a działa
+# szuka ścieżki do katalogu build
 build_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../build'))
 
-# Check operating system
+# chyba jasne
 system = platform.system()
 if system == 'Windows':
-    # Add Debug directory for Windows builds
+    # folder na debug
     build_path = os.path.join(build_path, 'Debug')
     module_extension = '.pyd'
 else:
-    # For Linux/Mac
+    #wersja linuxowa
     module_extension = '.so'
 
-# Add build directory to Python path
+# kolejne dir
 sys.path.append(build_path)
 
 try:
-    # Try to import the specific module
+    # pobiera z c++
     import example
     def wypiszelementy(tablica):
         print("wybierz sygnał: ")
@@ -35,7 +34,7 @@ try:
         return int(input())
 
 
-# Create signal object
+# obiekt sygnał
     freaquency = float(input("podaj częstotliwość sygnału: "))
     start = float(input("podaj moment rozpoczęcia: "))
     end = float(input("podaj moment zakończenia: "))
@@ -44,7 +43,7 @@ try:
     signallist.append(example.Signal(freaquency, start, end, signal_type))
     fourierlist = []
     wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, pf- plotuj transformaty, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
-    while wybor!="q":
+    while wybor!="q": #wielkie menu tylko że to pyton
         if wybor == "g":
             freaquency = float(input("podaj częstotliwość sygnału: "))
             start = float(input("podaj moment rozpoczęcia: "))
@@ -66,19 +65,14 @@ try:
             fourierlist.append(example.Fourier(signallist[wypiszelementy(signallist)]))
         elif wybor == "rdft":
             indekswyboru = wypiszelementy(fourierlist)
-            #example.N/(fourierlist[indekswyboru].t_end-fourierlist[indekswyboru].t_start)
             signallist.append(example.Signal(fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
             print("Odwrotna transformata Fouriera została dodana do listy sygnałów.")
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
         wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
-        # Test if import worked
-        # result = example.add()
-        # print(f"Success! Result of add(): {result}")
-        # print(f"Running on: {system}")
-        # print(f"\nModule location: {example.__file__}")
+        # sprawdź czy działa
 
-except ImportError as e:
+except ImportError as e:#debug
     print(f"Import error: {e}")
     print(f"Running on: {system}")
     print("\nLooking for module in:", build_path)

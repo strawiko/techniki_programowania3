@@ -4,25 +4,20 @@
 #include <string>
 #include <cmath>
 #include <complex>
-
-// #define PI 3.14159265358979323846
-// #define N 1000
-class Signal;  // Forward declaration of Signal class
+//deklaracje wszsytkiego
+class Signal;  
 class Fourier;
-// Forward declaration of generate function
 std::vector<double> generate(double f, double t_start, double t_end, std::string name);
 
-// Forward declaration of dft function
 std::vector<std::complex<double>> dft(Signal signal);
 
-// Forward declaration of idft function
 std::vector<double> idft(Fourier fourier);
-constexpr double PI = 3.14159265358979323846;
-constexpr int N = 100;  // Sampling frequency (samples per second)
+constexpr double PI = 3.14159265358979323846; //absurdalnie dużo cyfr liczby pi
+constexpr int N = 100;  // ilość próbek na sekundę
 
-class Signal {
+class Signal { //używane do generowania sygnałów
 public:
-    double f;
+    double f; //częstotliwość
     double t_start;
     double t_end;
     std::string name;
@@ -35,7 +30,7 @@ public:
 
     ~Signal();
 };
-class Fourier {
+class Fourier { //używane do transformacji w obie strony
 public:
     std::vector<std::complex<double>> X;
     double t_start;
@@ -45,5 +40,5 @@ public:
     ~Fourier() ;
 };
 
-void plot_signal(Signal signal);  // Add this declaration
-void plot_fourier(Fourier fourier);  // Add this declaration
+void plot_signal(Signal signal);  //rysowanie
+void plot_fourier(Fourier fourier);  
