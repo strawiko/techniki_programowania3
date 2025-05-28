@@ -50,5 +50,7 @@ PYBIND11_MODULE(example, m) { //test
         pybind11::arg("fourier"));
     m.def("addsignals", &addsignals, "Add two signals",
         pybind11::arg("signal1"), pybind11::arg("signal2"));
+    m.def("filter", &filter, "Filter signal with a cutoff frequency",
+        pybind11::arg("signal"), pybind11::arg("cutoff_hz"));
 
 }

@@ -38,6 +38,7 @@ pybind11_add_module(example
     src/Signal.cpp
     src/Fourier.cpp
     src/addsignals.cpp
+    src/filtering1d.cpp
 )
 
 # podaje biblioteki

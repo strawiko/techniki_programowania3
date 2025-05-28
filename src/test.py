@@ -42,7 +42,7 @@ try:
     signallist = []
     signallist.append(example.Signal(freaquency, faze, signal_type))
     fourierlist = []
-    wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, pf- plotuj transformaty, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
+    wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, add - dodaj dwa sygnały, p - plotuj, pf- plotuj transformaty, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
     while wybor!="q": #wielkie menu tylko że to pyton
         if wybor == "g":
             freaquency = float(input("podaj częstotliwość sygnału: "))
@@ -52,10 +52,8 @@ try:
         elif wybor=="add":
             signallist.append(example.Signal((signallist[wypiszelementy(signallist)]),signallist[wypiszelementy(signallist)]))
         elif wybor == "f":
-            filter_type = input("podaj typ filtru (lowpass, highpass): ")
             cutoff_frequency = float(input("podaj częstotliwość odcięcia: "))
-            filtered_signal = example.filter_signal(wypiszelementy(signallist), filter_type, cutoff_frequency)
-            plot = example.plot_signal(filtered_signal)
+            signallist.append(example.filter((signallist[wypiszelementy(signallist)]),cutoff_frequency))
         elif wybor == "p":
             print("Wybierz sygnał do wyświetlenia:")
             example.plot_signal(signallist[wypiszelementy(signallist)])
