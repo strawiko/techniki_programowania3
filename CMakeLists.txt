@@ -37,6 +37,7 @@ pybind11_add_module(example
     src/idft.cpp
     src/Signal.cpp
     src/Fourier.cpp
+    src/addsignals.cpp
 )
 
 # podaje biblioteki

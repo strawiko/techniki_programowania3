@@ -5,12 +5,13 @@
 #include <cmath>
 
 
-std::vector<double> generate(double f, double t_start, double t_end, std::string name) {
+std::vector<double> generate(double f, double faza, std::string name) {
     int sf = N;  // częstotliwość próbkowania (liczba próbek na sekundę)
-    int n = N * (t_end - t_start);  // łączna ilość próbek
+    int n = N * T;  // łączna ilość próbek
+    std::cout<<T<<std::endl;
     
     if (n <= 0) {
-        std::cout << "Error: t_end must be greater than t_start." << std::endl;//kontrola
+        std::cout << "Error: T must be greater than t_start." << std::endl;//kontrola
         return {};
     }
 
@@ -22,22 +23,22 @@ std::vector<double> generate(double f, double t_start, double t_end, std::string
     
     if (name == "sin") {
         for (int i = 0; i < n; i++) {
-            signal[i] = sin(2 * PI * f * i / sf);
+            signal[i] = sin((2 * PI * f * i) / sf+ faza*PI/180);
         }
     }
     else if (name == "cos") {
         for (int i = 0; i < n; i++) {
-            signal[i] = cos(2 * PI * f * i / sf);
+            signal[i] = cos((2 * PI * f * i) / sf+ faza*PI/180);
         }
     }
     else if (name == "kwadrat") {
         for (int i = 0; i < n; i++) {
-            signal[i] = (sin(2 * PI * f * i / sf) >= 0) ? 1 : -1;
+            signal[i] = (sin((2 * PI * f * i) / sf+ faza*PI/180) >= 0) ? 1 : -1;
         }
     }
     else if (name == "pila") {
         for (int i = 0; i < n; i++) {
-            double phase = PI * f * i / sf;
+            double phase = (PI * f * i) / sf + faza*PI/180; //faza jest przesunięciem
             signal[i] = (1/PI) * (phase - PI * floor(phase/PI));//floor zaokrągla wartość do całkowitej
         }
     }

@@ -14,7 +14,7 @@ void plot_signal(Signal signal) {
 
     // Czas to wektor a pingwin to walec
     std::vector<double> t(signal.samples.size());
-    double dt = (signal.t_end - signal.t_start) / signal.samples.size();
+    double dt = T / signal.samples.size();
     for(size_t i = 0; i < t.size(); i++) {
         t[i] = i * dt;
     }
@@ -23,7 +23,7 @@ void plot_signal(Signal signal) {
     // double y_min = *std::min_element(signal.samples.begin(), signal.samples.end()) - margin;
     // double y_max = *std::max_element(signal.samples.begin(), signal.samples.end()) + margin;
     //robi wykres
-    xlim({signal.t_start, signal.t_end-1});//zakresy x i y
+    xlim({0, T-1});//zakresy x i y
     ylim({-1.2, 1.2});
     plot(t, signal.samples);
     xlabel("Time [s]"); // etykiety osi x i y
@@ -31,7 +31,7 @@ void plot_signal(Signal signal) {
     title("Signal: " + signal.name);
     std::stringstream ss;
     ss << std::fixed << std::setprecision(1) << signal.f; // 2 miejsca po przecinku
-    std::string filename = (("../raport/"+signal.name+" "+(signal.name=="rdft"?"":(ss.str()+"hz") )+ "_signal.png"));
+    std::string filename = (("../raport/"+signal.name+" "+((signal.name!="sin"&&signal.name != "cos" &&signal.name != "kwadrat" &&signal.name != "pila")?"":(ss.str()+"hz") )+ "_signal.png"));
     std::cout << "Saving plot to: " << filename<< std::endl;
     save(filename);//wygodny zapis do raportu
     show();

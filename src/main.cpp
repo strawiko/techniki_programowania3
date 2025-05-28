@@ -23,19 +23,16 @@ PYBIND11_MODULE(example, m) { //test
 
     // definicje do pybind 
     pybind11::class_<Signal>(m, "Signal")
-        .def(pybind11::init<double, double, double, std::string>())
-        .def(pybind11::init< double, double, std::string, Fourier>())
+        .def(pybind11::init<double, double, std::string>())
+        .def(pybind11::init< std::string, Fourier>())
+        .def(pybind11::init<Signal, Signal>())
         .def_readwrite("frequency", &Signal::f)
-        .def_readwrite("t_start", &Signal::t_start)
-        .def_readwrite("t_end", &Signal::t_end)
         .def_readwrite("name", &Signal::name)
         .def_readwrite("samples", &Signal::samples);
 
     pybind11::class_<Fourier>(m, "Fourier")
         .def(pybind11::init<Signal>())
-        .def_readwrite("X", &Fourier::X)
-        .def_readwrite("t_start", &Fourier::t_start)
-        .def_readwrite("t_end", &Fourier::t_end);
+        .def_readwrite("X", &Fourier::X);
 
     m.attr("N")= N;  // przekaz ilości próbek i WIELU cyfr liczby pi
     m.attr("PI") = PI;  
@@ -51,6 +48,7 @@ PYBIND11_MODULE(example, m) { //test
 
     m.def("idft", &idft, "Inverse Discrete Fourier Transform",
         pybind11::arg("fourier"));
-    
+    m.def("addsignals", &addsignals, "Add two signals",
+        pybind11::arg("signal1"), pybind11::arg("signal2"));
 
 }

@@ -6,8 +6,6 @@
     
     Fourier::Fourier(const Signal& signal) {
         X = dft(signal);
-        t_start = signal.t_start;
-        t_end = signal.t_end;
     }
 
     Fourier::~Fourier() {

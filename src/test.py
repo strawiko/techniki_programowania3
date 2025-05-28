@@ -36,20 +36,21 @@ try:
 
 # obiekt sygnał
     freaquency = float(input("podaj częstotliwość sygnału: "))
-    start = float(input("podaj moment rozpoczęcia: "))
-    end = float(input("podaj moment zakończenia: "))+1.0
+    faze= float(input("podaj przesuniecie fazowe: "))
+
     signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
     signallist = []
-    signallist.append(example.Signal(freaquency, start, end, signal_type))
+    signallist.append(example.Signal(freaquency, faze, signal_type))
     fourierlist = []
     wybor = input("podaj wybór (g - generuj drugi sygnał, f - filtruj, p - plotuj, pf- plotuj transformaty, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")
     while wybor!="q": #wielkie menu tylko że to pyton
         if wybor == "g":
             freaquency = float(input("podaj częstotliwość sygnału: "))
-            start = float(input("podaj moment rozpoczęcia: "))
-            end = float(input("podaj moment zakończenia: "))
+            faze = float(input("podaj przesunięcie fazowe: "))
             signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
-            signallist.append(example.Signal(freaquency, start, end, signal_type))
+            signallist.append(example.Signal(freaquency, faze, signal_type))
+        elif wybor=="add":
+            signallist.append(example.Signal((signallist[wypiszelementy(signallist)]),signallist[wypiszelementy(signallist)]))
         elif wybor == "f":
             filter_type = input("podaj typ filtru (lowpass, highpass): ")
             cutoff_frequency = float(input("podaj częstotliwość odcięcia: "))
@@ -65,7 +66,7 @@ try:
             fourierlist.append(example.Fourier(signallist[wypiszelementy(signallist)]))
         elif wybor == "rdft":
             indekswyboru = wypiszelementy(fourierlist)
-            signallist.append(example.Signal(fourierlist[indekswyboru].t_start, fourierlist[indekswyboru].t_end, "rdft",fourierlist[indekswyboru]))
+            signallist.append(example.Signal( "rdft",fourierlist[indekswyboru]))
             print("Odwrotna transformata Fouriera została dodana do listy sygnałów.")
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
