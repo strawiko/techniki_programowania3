@@ -37,7 +37,7 @@ try:
 # obiekt sygnał
     freaquency = float(input("podaj częstotliwość sygnału: "))
     start = float(input("podaj moment rozpoczęcia: "))
-    end = float(input("podaj moment zakończenia: "))
+    end = float(input("podaj moment zakończenia: "))+1.0
     signal_type = input("podaj typ sygnału (sin,cos, kwadrat, pila): ")
     signallist = []
     signallist.append(example.Signal(freaquency, start, end, signal_type))

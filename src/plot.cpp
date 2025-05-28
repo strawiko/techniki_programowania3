@@ -19,12 +19,12 @@ void plot_signal(Signal signal) {
         t[i] = i * dt;
     }
     //zakres zmian i margines
-     double margin = (*std::max_element(signal.samples.begin(), signal.samples.end()) - *std::min_element(signal.samples.begin(), signal.samples.end())) * 0.2;
-    double y_min = *std::min_element(signal.samples.begin(), signal.samples.end()) - margin;
-    double y_max = *std::max_element(signal.samples.begin(), signal.samples.end()) + margin;
+     //double margin = (*std::max_element(signal.samples.begin(), signal.samples.end()) - *std::min_element(signal.samples.begin(), signal.samples.end())) * 0.2;
+    // double y_min = *std::min_element(signal.samples.begin(), signal.samples.end()) - margin;
+    // double y_max = *std::max_element(signal.samples.begin(), signal.samples.end()) + margin;
     //robi wykres
-    xlim({signal.t_start, signal.t_end});//zakresy x i y
-    ylim({y_min, y_max});
+    xlim({signal.t_start, signal.t_end-1});//zakresy x i y
+    ylim({-1.2, 1.2});
     plot(t, signal.samples);
     xlabel("Time [s]"); // etykiety osi x i y
     ylabel("Amplitude");
