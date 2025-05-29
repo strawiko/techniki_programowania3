@@ -39,6 +39,7 @@ pybind11_add_module(example
     src/Fourier.cpp
     src/addsignals.cpp
     src/filtering1d.cpp
+    src/correlation.cpp
 )
 
 # podaje biblioteki

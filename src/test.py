@@ -66,6 +66,8 @@ try:
             indekswyboru = wypiszelementy(fourierlist)
             signallist.append(example.Signal( "rdft",fourierlist[indekswyboru]))
             print("Odwrotna transformata Fouriera została dodana do listy sygnałów.")
+        elif wybor=="corr":
+            signallist.append(example.Signal(example.correlation(signallist[wypiszelementy(signallist)], signallist[wypiszelementy(signallist)])))
         else:
             print("Nieznany wybór. Spróbuj ponownie.")
         wybor = input("podaj wybór (g - generuj, f - filtruj, p - plotuj, dft - transformata Fouriera, rdft - odwrotna transformata Fouriera): ")

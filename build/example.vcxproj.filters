@@ -28,6 +28,9 @@
     <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\filtering1d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\correlation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\CMakeLists.txt" />

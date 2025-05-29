@@ -13,6 +13,7 @@ std::vector<double> addsignals(Signal signal1, Signal signal2); //dodawanie sygn
 std::vector<std::complex<double>> dft(Signal signal);
 std::vector<double> idft(Fourier fourier);
 Signal filter(Signal signal, double cutoff_hz); //filtracja sygnału
+std::vector<double> correlation(const Signal& signal1, const Signal& signal2); //korelacja sygnałów
 constexpr double PI = 3.14159265358979323846; //absurdalnie dużo cyfr liczby pi
 constexpr int N = 100;  // ilość próbek na sekundę
 constexpr double T=5.0;
@@ -27,7 +28,7 @@ public:
         
     Signal( std::string signal_name,const Fourier& transformata);
     Signal(Signal signal1, Signal signal2);
-
+    Signal( const std::vector<double>& samples);
     ~Signal();
 };
 class Fourier { //używane do transformacji w obie strony

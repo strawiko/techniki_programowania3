@@ -21,6 +21,9 @@
         
         samples = addsignals(signal1, signal2);
     }
+    Signal::Signal( const std::vector<double>& samples)
+        : name("correlation"), samples(samples) {// Frequency is not set in this constructor
+    }
     Signal::~Signal(){
         std::cout << "Signal destructor called for " << name << std::endl;
     }

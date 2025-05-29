@@ -21,7 +21,10 @@ CMakeUserPresets.json
 *.code-workspace
 tests/
 # Build directories
-
+build/
+out/
+[Bb]uild/
+[Oo]ut/
 
 # VS Code C/C++ extension files
 .cache/

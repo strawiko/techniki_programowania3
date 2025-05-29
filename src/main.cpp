@@ -26,6 +26,7 @@ PYBIND11_MODULE(example, m) { //test
         .def(pybind11::init<double, double, std::string>())
         .def(pybind11::init< std::string, Fourier>())
         .def(pybind11::init<Signal, Signal>())
+        .def(pybind11::init<const std::vector<double>&>())
         .def_readwrite("frequency", &Signal::f)
         .def_readwrite("name", &Signal::name)
         .def_readwrite("samples", &Signal::samples);
@@ -52,5 +53,7 @@ PYBIND11_MODULE(example, m) { //test
         pybind11::arg("signal1"), pybind11::arg("signal2"));
     m.def("filter", &filter, "Filter signal with a cutoff frequency",
         pybind11::arg("signal"), pybind11::arg("cutoff_hz"));
-
+    m.def("correlation", &correlation, "Calculate correlation between two signals",
+        pybind11::arg("signal1"), pybind11::arg("signal2"));
+    
 }

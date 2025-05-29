@@ -356,6 +356,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\Fourier.cpp" />
     <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\addsignals.cpp" />
     <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\filtering1d.cpp" />
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\correlation.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
