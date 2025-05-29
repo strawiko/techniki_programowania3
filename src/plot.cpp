@@ -47,30 +47,30 @@ void plot_fourier(Fourier fourier) {
 
     // wektor częstotliwości zależny od próbkowania
     size_t M  = fourier.X.size();  // liczba próbek
-double fs = N;         // częstotliwość próbkowania [Hz]
-double df = fs / M;            // odstęp między kolejnymi momentami czasu dyskretnego
+    double fs = N;         // częstotliwość próbkowania [Hz]
+    double df = fs / M;            // odstęp między kolejnymi momentami czasu dyskretnego
 
-// wyświetlić tylko nad kreską
-size_t H = M/2 + 1;            // liczba binów w rfft
-std::vector<double> f(H), magnitude(H);
+    // wyświetlić tylko nad kreską
+    size_t H = M/2 + 1;            // liczba binów w rfft
+    std::vector<double> f(H), magnitude(H);
 
-for (size_t k = 0; k < H; ++k) {
-    // oś częstotliwości w [Hz]
-    f[k] = k * df;
+    for (size_t k = 0; k < H; ++k) {
+        // oś częstotliwości w [Hz]
+        f[k] = k * df;
 
-    // amplituda – standardowo skalujemy przez 2/M, żeby mieć
-    // rzeczywiste wartości z dziedziny czasu
-    magnitude[k] = 2.0 * std::abs(fourier.X[k]) / M;
+        // amplituda – standardowo skalujemy przez 2/M, żeby mieć
+        // rzeczywiste wartości z dziedziny czasu
+        magnitude[k] = 2.0 * std::abs(fourier.X[k]) / M;
 
-}
-//rysowanie wykresów
-xlim({0, *std::max_element(f.begin(),f.end())* 1.2});
-ylim({0, *std::max_element(magnitude.begin(), magnitude.end()) * 1.2});
-plot(f, magnitude);
-xlabel("Frequency [Hz]");
-ylabel("Magnitude");
-title("Fourier Transform");
-    
+    }
+    //rysowanie wykresów
+    xlim({0, *std::max_element(f.begin(),f.end())* 1.2});
+    ylim({0, *std::max_element(magnitude.begin(), magnitude.end()) * 1.2});
+    plot(f, magnitude);
+    xlabel("Frequency [Hz]");
+    ylabel("Magnitude");
+    title("Fourier Transform");
+        
     std::string filename = (("../raport/Fourier_transform.png"));
     std::cout << "Saving plot to: " << filename << std::endl;
     save(filename);

@@ -33,7 +33,6 @@ public:
 class Fourier { //używane do transformacji w obie strony
 public:
     std::vector<std::complex<double>> X;
-
     Fourier(const Signal& signal);
 
     ~Fourier() ;

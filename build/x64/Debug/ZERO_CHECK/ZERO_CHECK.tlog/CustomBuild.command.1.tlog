@@ -1,0 +1,10 @@
+^C:\USERS\STRAW\REPOZYTORIA\TECHNIKI3\TECHNIKI_PROGRAMOWANIA3\BUILD\CMAKEFILES\E71F903C4C8AAC45940EEB1835C74A1A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/straw/Repozytoria/techniki3/techniki_programowania3 -BC:/Users/straw/Repozytoria/techniki3/techniki_programowania3/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/straw/Repozytoria/techniki3/techniki_programowania3/build/techniki_programowania3.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

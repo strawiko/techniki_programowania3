@@ -1,0 +1,10 @@
+^C:\USERS\STRAW\REPOZYTORIA\TECHNIKI3\TECHNIKI_PROGRAMOWANIA3\BUILD\LIB\MATPLOTPLUSPLUS-SUBBUILD\CMAKEFILES\BBF3B4EC459A214A3A59A5275EB108B9\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/straw/Repozytoria/techniki3/techniki_programowania3/build/lib/matplotplusplus-subbuild -BC:/Users/straw/Repozytoria/techniki3/techniki_programowania3/build/lib/matplotplusplus-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/straw/Repozytoria/techniki3/techniki_programowania3/build/lib/matplotplusplus-subbuild/matplotplusplus-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

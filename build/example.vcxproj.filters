@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\plot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\dft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\idft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\Signal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\Fourier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\addsignals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\src\filtering1d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\straw\Repozytoria\techniki3\techniki_programowania3\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{301DA5FF-7D8F-395D-B934-774C414DDFBA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
