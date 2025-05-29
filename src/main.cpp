@@ -4,19 +4,8 @@
 #include <pybind11/pybind11.h>
 #include "headers.h"
 #include<pybind11/complex.h>
-//sprawdzić czy potrzebne
-// int add() {
-//     int a = 5;
-//     int b = 7;
-//     Signal s (3.0, 0.0, 1.0, "sin");
-//     for(int i = 0; i < 100; i+=10) {
-//         std::cout << s.samples[i] << " ";
-//     }std::cout << std::endl;
-//     return a + b;
-// }
-    //nadpisywanie maina
-
-PYBIND11_MODULE(example, m) { //test
+//konfiguracja pybind11
+PYBIND11_MODULE(example, m) { 
     m.doc() = "Example module using pybind11";
 
     
@@ -35,9 +24,8 @@ PYBIND11_MODULE(example, m) { //test
         .def(pybind11::init<Signal>())
         .def_readwrite("X", &Fourier::X);
 
-    m.attr("N")= N;  // przekaz ilości próbek i WIELU cyfr liczby pi
+    m.attr("N")= N;  
     m.attr("PI") = PI;  
-    //definicje funkcji
     m.def("plot_signal", &plot_signal, "Plot signal using matplot++",
         pybind11::arg("signal"));
     
