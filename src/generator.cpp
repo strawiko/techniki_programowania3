@@ -8,7 +8,6 @@
 std::vector<double> generate(double f, double faza, std::string name) {
     int sf = N;  // częstotliwość próbkowania (liczba próbek na sekundę)
     int n = N * T;  // łączna ilość próbek
-    std::cout<<T<<std::endl;
     
     if (n <= 0) {
         std::cout << "Error: T must be greater than t_start." << std::endl;//kontrola
